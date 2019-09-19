@@ -22,7 +22,7 @@ FileHandler::FileHandler() {
 
 void FileHandler::LoadEmulators() {
 
-    string themePath = "themes/";
+    string themePath = "/home/retrofw/apps/coverflow/themes/";
 
     /*** File Reader */    
     struct dirent *de;  // Pointer for directory entry 
@@ -56,6 +56,7 @@ void FileHandler::listFilesRecursively(string basePath)
     char path[1000];
     struct dirent *dp;
 
+cout << "Reading " << basePath << "..." << endl;
     /* Get extensionlist */
 	vector<string> emulatorExt = split(_cfg.emulatorExtensions, ";");
 
@@ -289,7 +290,7 @@ const vector<string> FileHandler::GetThemes() {
 	vector<string>result;
 
 
-    string themePath = "themes/" + _cfg.emulatorType;
+    string themePath = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType;
 
     /*** File Reader */    
     struct dirent *de;  // Pointer for directory entry 

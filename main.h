@@ -19,7 +19,7 @@ bool pauseTread = false;
 SDL_Thread *thread;
 int threadDelay = 5;
 int currentThreadDelay = 5;
-string emulatorType = "NES";
+string emulatorType = "nes";
 string screenType = "EMULATOR";
 
 CoverFlowOnScreen::coverFlowState _CFState = CoverFlowOnScreen::EMULATOR;

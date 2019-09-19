@@ -1,39 +1,16 @@
-# Software Name
-PROGRAM = coverflow.elf
-PLATFORM = BITTBOY
-#PLATFORM = PC
+CC = mipsel-linux-g++
+CFLAGS += -DPC_VERSION -DRES320X240 `sdl-config --cflags`
 
-# Compiler
-
-
-CC = g++
-
-
-# You can use Ofast too but it can be more prone to bugs, careful.
-#CFLAGS = -O2 -fdata-sections -ffunction-sections -fno-PIC -flto -Wall -no-pie
-CFLAGS +=  -I.
-
-LIBS += -lSDL_mixer -lSDL -lm -lSDL_image -lSDL_ttf -lSDL_gfx
-LDFLAGS = -Wl,--start-group $(LIBS) -Wl,--end-group -Wl,--as-needed -Wl,--gc-sections -flto
-
-ifeq ($(DEBUG), YES)
-CFLAGS +=  -DDEBUG -g3
-else
-LDFLAGS	+=  -s
-endif
-
-CFILES =  main.cpp FileHandler.cpp CoverFlowOnScreen.cpp Configuration.cpp Helper.cpp CTime.cpp Screen.cpp
-SFILES = 
-
-OFILES = $(SFILES:.S=.o) $(CFILES:.cpp=.o)
-
-$(PROGRAM):	$(OFILES)
-			$(CC) $(CFLAGS) $(OFILES) -o $@ $(LDFLAGS)
-
-all: $(PROGRAM)
-
-%.o: %.c
-	 $(CC) $(CFLAGS) -c $< -o $@
+all: main
+main : main.cpp
+	$(CC) -lSDL -lSDL_gfx -lSDL_mixer -lSDL_image -lSDL_ttf -o coverflow main.cpp FileHandler.cpp CoverFlowOnScreen.cpp Configuration.cpp Helper.cpp CTime.cpp Screen.cpp
+	./package
+.c.o: 
+	$(CC) $(CFLAGS) -c $*.c -o $*.o 
 
 clean:
-	 -rm -f $(OFILES) $(MAPFILE) $(PROGRAM)
+	rm -rf *.o
+	rm -rf main 
+	rm -rf *~
+
+.PHONY: clean main

@@ -28,11 +28,14 @@ CoverFlowOnScreen::CoverFlowOnScreen() {
 }
 
 void CoverFlowOnScreen::Init() {
-	
+
+cout << "Loading files..." << endl;
 	LoadAllFiles(); 
 
+cout << "Initializing screen..." << endl;
 	_screen.Init();	
 
+cout << "Load()..." << endl;
 	Load();
 
 }
@@ -59,12 +62,15 @@ void CoverFlowOnScreen::LoadAllFiles() {
 
 void CoverFlowOnScreen::Load() {	
 	
+cout << "Loading assets..." << endl;
 	LoadAssets();	
 	
 	if(_fileCollection.size()>0) {
+cout << "Preloading images..." << endl;
 		PreLoadImages();	
 	}
 	
+cout << "Refreshing images..." << endl;
 	RefreshImages();	
 
 }
@@ -165,6 +171,7 @@ void CoverFlowOnScreen::LoadAssets() {
 
 	/* Load background */
 	string tmpBackgroundUrl = _CFState == EMULATOR ? _cfg.imgConsoleBackground : _cfg.imgBackground;
+cout << "Loading " << tmpBackgroundUrl << "..." << endl;
 	imgBackground = IMG_Load(tmpBackgroundUrl.c_str());
 
 	/* BookIcon */
@@ -269,18 +276,23 @@ void CoverFlowOnScreen::LoadAssets() {
 
 
 void CoverFlowOnScreen::PreLoadImages() {
+cout << "Preloading images..." << endl;
 	/* Clear gamelist */
 	fill_n(_cfl, 2000, CFgamelist{}); 
+cout << "Filled list..." << endl;
 	/* Reload images in scope */
 	int currentArrayPosition = 0;
 	/* Fav */
 	bool isFav = false;
+cout << "Getting " << _cfg.currentPosY << " character out of " << _characterList.size() << "..." << endl;
 	/* Which character? */
 	char currentCharacter = _characterList[_cfg.currentPosY][0];
+cout << "Checking favorites..." << endl;
 
 
 		/* If no fav, skip fav list */
 	if(currentCharacter == '*' && _favList.size() == 0) {
+cout << "Matching favorites..." << endl;
 		_cfg.currentPosY++;
 		currentCharacter = _characterList[_cfg.currentPosY][0];
 		_cfg.currentPosX = 0;
@@ -291,6 +303,7 @@ void CoverFlowOnScreen::PreLoadImages() {
 	int untilPosX = 0;
 	fromPosX = _cfg.currentPosX - 3;
 	untilPosX = _cfg.currentPosX + 3;
+cout << "Looping preload images..." << endl;
 
 	/* Preload only the first x */
 	for(int i = 0; i < _fileCollection.size(); i++) {
@@ -298,6 +311,9 @@ void CoverFlowOnScreen::PreLoadImages() {
 		string fname = _fileCollection[i].fileName;
 		string bxName = _fileCollection[i].boxartName;
 		string scName = _fileCollection[i].screenshotName;
+cout << "Filename " << fname << "..." << endl;
+cout << "Filename " << bxName << "..." << endl;
+cout << "Filename " << scName << "..." << endl;
 
 		if(character[0] == currentCharacter || currentCharacter == '*') {
 
@@ -348,6 +364,7 @@ void CoverFlowOnScreen::PreLoadImages() {
 
 	/* Thread should start loading boxarts from this nr */
 	_cfg.loadNr = (_cfg.loadMaxGames-1); // -1  because array starts from 0 
+cout << "Completed preload..." << endl;
 
 }
 
@@ -720,7 +737,7 @@ void CoverFlowOnScreen::DrawThemeScreen() {
 	if(_themeList.size() > 0) {
 		
 		/* Textbox */
-		SDL_Surface* msgboxSurfacePre = IMG_Load(("assets/images/msgbox.png"));
+		SDL_Surface* msgboxSurfacePre = IMG_Load(("/home/retrofw/apps/coverflow/assets/images/msgbox.png"));
 		imgMsgboxSurface = SDL_DisplayFormatAlpha(msgboxSurfacePre);
 		Sint16 posImgX = (_screen.GetScreenWidth() / 2 )  - (imgMsgboxSurface->w /2);
 		Sint16 posImgy = (_screen.GetScreenHeight() / 2 )- (imgMsgboxSurface->h /2);
@@ -1001,7 +1018,7 @@ void CoverFlowOnScreen::CheckController() {
 			vector<string> _themeSave;
 			_themeSave.push_back("#current theme");
 			_themeSave.push_back("theme=" + _themeList[_themePosition]);
-			_helper.WriteVectorToFile("themes/" + _cfg.emulatorType + "/emulator.cfg", _themeSave);
+			_helper.WriteVectorToFile("/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/emulator.cfg", _themeSave);
 			_themePosition=0;
 			switchEnvironment = true;
 		}

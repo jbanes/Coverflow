@@ -20,7 +20,8 @@ public:
 		string emulatorExec = "";
 		string emulatorParams = "";
 		string emulatorExtensions = "*";
-		int logging = 0;
+//		int logging = 0;
+		int logging = 1;
 		int switchToEmu = 1;
 
 		string romPath = "";	

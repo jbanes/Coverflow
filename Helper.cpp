@@ -59,14 +59,14 @@ void Helper::WriteVectorToFile(string fileName, const vector<string> &message)
 void Helper::WriteTextToLogFile(const string &message)
 {   
 
-  if(_cfg.logging == 1) {
+//  if(_cfg.logging == 1) {
 	  duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-
-	  ofstream myfile;
-	  myfile.open ("logging.txt", ios_base::app);
-	  myfile << message << " ?? Duraction " << duration << ";" << "\n";
-	  myfile.close(); 
-  }
+cout << message << " ?? Duraction " << duration << ";" << "\n";
+//	  ofstream myfile;
+//	  myfile.open ("logging.txt", ios_base::app);
+//	  myfile << message << " ?? Duraction " << duration << ";" << "\n";
+//	  myfile.close(); 
+//  }
   
 }
 
@@ -74,6 +74,6 @@ void Helper::WriteTextToLogFile(const string &message)
 void Helper::executeCommand (string emulatorPath, string emulatorName, string emulatorParams, string fileToBeExecuted, string emulatorType, string posX, string posY) {
 
 	cout << "start inv cov:" << posX << " " << posY << endl;
-	execlp("./invoker.elf","invoker.elf", emulatorPath.c_str(), emulatorName.c_str(), emulatorParams.c_str(), fileToBeExecuted.c_str(), emulatorType.c_str(), posX.c_str(), posY.c_str(), NULL);
+	execlp("./invoker.elf", "invoker.elf", emulatorPath.c_str(), emulatorName.c_str(), emulatorParams.c_str(), fileToBeExecuted.c_str(), emulatorType.c_str(), posX.c_str(), posY.c_str(), NULL);
 	cout << "done inv cov" << endl;
 }

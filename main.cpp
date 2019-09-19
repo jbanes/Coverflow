@@ -32,6 +32,9 @@ int main(int argc, char* argv[])
 	if(posX < 0) posX = 0;
 	if(posY < 0) posY = 0;
 	
+posX = 0;
+posY = 0;
+        
 	Init(posX, posY);	
 
 	/* Thread Loop */
@@ -72,34 +75,44 @@ void Init(int posX, int posY) {
 
 	//Reset classes
 	_helper.Init();
+cout << "Initializing..." << endl;
 	_config  = Configuration();		
 	_fileHandler = FileHandler();
 	_CoverFlowOnScreen = CoverFlowOnScreen();		
 	_CoverFlowOnScreen._CFState = _CFState;
+cout << "Initialized..." << endl;
 
 	// Set emulator
 	_config._cfg.emulatorType = emulatorType;
 	_config.Init();
 	_helper._cfg = _config._cfg;
+cout << "Configured..." << endl;
 
 	if (_config._cfg.emulatorType.empty()) {
+cout << "Set default emu to NES..." << endl;
 		_helper.WriteTextToLogFile("Set default emu to NES"); //log
-		_config._cfg.emulatorType = "NES";
+		_config._cfg.emulatorType = "nes";
 	}	
+        
+cout << "Default checked..." << endl;
 
 	_CFState = screenType == "EMULATOR" ? CoverFlowOnScreen::EMULATOR : CoverFlowOnScreen::GAMELIST;
 	_CoverFlowOnScreen._CFState = _CFState;
 	_helper.WriteTextToLogFile("Start"); //log
+        
+cout << "Selected screen type..." << endl;
 
 	/* Set CoverFlow variables */
 	_helper.WriteTextToLogFile("Set coverflowvars"); //log
 	_CoverFlowOnScreen._cfg = _config._cfg;
 	_CoverFlowOnScreen._cfg.currentPosX = posX;
 	_CoverFlowOnScreen._cfg.currentPosY = posY;
+cout << "Position set..." << endl;
 
 	/* Start Coverflow */
 	_helper.WriteTextToLogFile("Init coverflow"); //log
-	_CoverFlowOnScreen.Init();	
+	_CoverFlowOnScreen.Init();
+cout << "Coverflow ran..." << endl;	
 }
 
 void Quit() {

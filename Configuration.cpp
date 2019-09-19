@@ -29,7 +29,7 @@ string trim(const string& str)
 void Configuration::Init() {
 
     // emulator config (to define the theme first)
-    string configEmulatorfile = "themes/" + _cfg.emulatorType + "/emulator.cfg";
+    string configEmulatorfile = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/emulator.cfg";
     ifstream cFileEmu (configEmulatorfile);
     if (cFileEmu.is_open())
     {
@@ -45,11 +45,11 @@ void Configuration::Init() {
         
     }
     else {
-        std::cerr << "Couldn't open config file for reading.\n";
+        std::cerr << "Couldn't open config file for reading - " << configEmulatorfile << "\n";
     }       
 
 	// basic config
-    string configBasicfile = "themes/" + _cfg.emulatorType + "/basic.cfg";
+    string configBasicfile = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/basic.cfg";
     ifstream cFileBasic (configBasicfile);
     if (cFileBasic.is_open())
     {
@@ -64,11 +64,11 @@ void Configuration::Init() {
         
     }
     else {
-        std::cerr << "Couldn't open config file for reading.\n";
+        std::cerr << "Couldn't open config file for reading - " << configBasicfile << "\n";
     }
 
     // advance config
-    string configAdvancefile = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + "/config/advance.cfg";
+    string configAdvancefile = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + "/config/advance.cfg";
     ifstream cFileAdv (configAdvancefile);
     if (cFileAdv.is_open())
     {
@@ -84,7 +84,7 @@ void Configuration::Init() {
         
     }
     else {
-        std::cerr << "Couldn't open config file for reading.\n";
+        std::cerr << "Couldn't open config file for reading - " << configAdvancefile << "\n";
     }  
 
 
@@ -150,70 +150,70 @@ void Configuration::AddConfigVariable(auto name, auto value) {
 
     //Emulator
     if(name == "imgBackground"){
-        _cfg.imgBackground = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgBackground = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgDefaultBoxart"){
-        _cfg.imgDefaultBoxart = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgDefaultBoxart = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }         
     if(name == "imgShadow"){
-        _cfg.imgShadow = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgShadow = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgBookIcon"){
-        _cfg.imgBookIcon = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgBookIcon = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgGameIcon"){
-        _cfg.imgGameIcon = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgGameIcon = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgConsoleIcon"){
-        _cfg.imgConsoleIcon = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgConsoleIcon = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgFavOff"){
-        _cfg.imgFavOff = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgFavOff = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgFavOn"){
-        _cfg.imgFavOn = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgFavOn = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonY"){
-        _cfg.imgUrlButtonY = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonY = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonX"){
-        _cfg.imgUrlButtonX = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonX = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonB"){
-        _cfg.imgUrlButtonB = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonB = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonA"){
-        _cfg.imgUrlButtonA = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonA = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonL"){
-        _cfg.imgUrlButtonL = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonL = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonR"){
-        _cfg.imgUrlButtonR = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonR = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonStart"){
-        _cfg.imgUrlButtonStart = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonStart = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonSelect"){
-        _cfg.imgUrlButtonSelect = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonSelect = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonHome"){
-        _cfg.imgUrlButtonHome = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonHome = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonUp"){
-       _cfg.imgUrlButtonUp = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+       _cfg.imgUrlButtonUp = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonDown"){
-        _cfg.imgUrlButtonDown = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonDown = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonLeft"){
-        _cfg.imgUrlButtonLeft = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonLeft = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonRight"){
-        _cfg.imgUrlButtonRight = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonRight = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "imgUrlButtonAll"){
-        _cfg.imgUrlButtonAll = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.imgUrlButtonAll = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
 
     /* Fonts */
@@ -224,16 +224,16 @@ void Configuration::AddConfigVariable(auto name, auto value) {
 
     //Emulator
     if(name == "fontCharacter"){
-        _cfg.fontCharacter = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.fontCharacter = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "fontGameList"){
-        _cfg.fontGameList = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.fontGameList = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "fontFilename"){
-        _cfg.fontFilename = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.fontFilename = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }
     if(name == "fontConsolename"){
-        _cfg.fontConsolename = "themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
+        _cfg.fontConsolename = "/home/retrofw/apps/coverflow/themes/" + _cfg.emulatorType + "/" + _cfg.theme + value;
     }      
 
     /* Configuration */
