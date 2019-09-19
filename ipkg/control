@@ -1,0 +1,10 @@
+Package: Coverflow
+Version: 20190918
+Description: Menu similar to Emulation Station
+Section: apps
+Priority: optional
+Maintainer: jbanes
+Architecture: mipsel
+Homepage: https://github.com/jbanes/Coverflow
+Depends:
+Source: https://github.com/jbanes/Coverflow.git

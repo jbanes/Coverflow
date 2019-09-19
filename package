@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mv coverflow ipkg/home/retrofw/apps/coverflow/coverflow.dge
+cd ipkg
+
+tar -czvf control.tar.gz control
+tar -czvf data.tar.gz home
+ar rv coverflow.ipk control.tar.gz data.tar.gz debian-binary
+
+cd ..
+
+mv ipkg/coverflow.ipk build/
+rm ipkg/control.tar.gz
+rm ipkg/data.tar.gz
+rm ipkg/home/retrofw/apps/coverflow/coverflow.dge

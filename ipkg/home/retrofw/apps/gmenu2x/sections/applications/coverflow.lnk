@@ -1,0 +1,4 @@
+title=Coverflow
+description=Menu similar to Emulation Station
+exec=/home/retrofw/apps/coverflow/coverflow.dge
+clock=600
